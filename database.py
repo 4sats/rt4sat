@@ -167,7 +167,7 @@ class Database(object):
         result = self.cursor.fetchone()
         return result[0]
     def get_total_amount(self, retweet_id):
-        self.cursor.execute("SELECT amount FROM users WHERE retweet_id=? AND unretweet=0 ;", [str(retweet_id)])
+        self.cursor.execute("SELECT amount FROM users WHERE retweet_id=? AND unretweet=0 AND ispaid=1 ;", [str(retweet_id)])
         results = self.cursor.fetchall()
         s=0
         for result in results:
