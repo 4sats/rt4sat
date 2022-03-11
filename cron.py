@@ -9,7 +9,7 @@ while True:
             if user[7]==0:
                 print(str(user[1]))
                 checkinvoice = requests.get("https://legend.lnbits.com/api/v1/payments/"+str(user[3]), headers = {"X-Api-Key": config.api_key,"Content-type": "application/json"})
-                print(checkinvoice.text)
+                #print(checkinvoice.text)
                 kk=checkinvoice.json()
                 if kk["paid"]==True:
                     Database().set_ispaid(1, user[0])
@@ -17,11 +17,10 @@ while True:
                     api = tweepy.API(auth)
                     if user[9]==1:
                         api.unretweet(user[2])
-                        print("unretweeted!")
+                        print(user[0],"unretweeted!")
                     else:
                         api.retweet(user[2])
-                        print("retweeted")
-                    
+                        print(user[0],"retweeted")
                 elif ((time.time()-user[8])>1200):
                     Database().delete_row(user[0])
     except Exception as e:
