@@ -24,11 +24,11 @@ class IDPrinter(AsyncStream):
             if mention["screen_name"] == config.username:
               ismentioned = True
               break
-          if ismentioned:
+          if ismentioned and (status.in_reply_to_status_id_str is not None):
             id = status.id_str
             amount = min_amount
             text = status.text.lower()
-            cmd = text[text.rfind('@retweet4sats'):]
+            cmd = text[text.rfind('@'+config.username):]
             s = cmd.split(" ")
             auth = tweepy.OAuth1UserHandler(consumer_key, consumer_secret, access_token, access_token_secret)
             api = tweepy.API(auth)
