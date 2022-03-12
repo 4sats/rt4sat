@@ -7,7 +7,6 @@ while True:
         users = Database().get_all_users()
         for user in users:
             if user[7]==0:
-                print(str(user[1]))
                 checkinvoice = requests.get("https://legend.lnbits.com/api/v1/payments/"+str(user[3]), headers = {"X-Api-Key": config.api_key,"Content-type": "application/json"})
                 #print(checkinvoice.text)
                 kk=checkinvoice.json()
