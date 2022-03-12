@@ -71,7 +71,7 @@ def create_transaction(tweet_id,retweet_id,amount,unretweet,reason):
     type(img)  # qrcode.image.pil.PilImage
     img.save(str(tweet_id)+".png")
     api.update_status_with_media("Pay "+str(amount)+"sat with lightning "+reason,filename=str(id)+".png",in_reply_to_status_id=tweet_id,auto_populate_reply_metadata=True)
-    os.remove(str(id)+".png")
+    os.remove(str(tweet_id)+".png")
     Database().add_user(tweet_id,retweet_id,kk["payment_hash"],kk["payment_request"],kk["checking_id"],amount,0,time.time(),unretweet)
 
 
