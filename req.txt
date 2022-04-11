@@ -1,2 +1,3 @@
 tweepy[async]
 qrcode[pil]
+flask
