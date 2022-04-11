@@ -15,10 +15,6 @@ async def main():
 
 
 class IDPrinter(AsyncStream):
-    async def on_disconnect(self):
-        printer = IDPrinter(consumer_key, consumer_secret,access_token, access_token_secret)
-        await printer.filter(track=[config.username])
-        return await super().on_disconnect()
     async def on_status(self, status):
       try:
         if hasattr(status, "_json"):
